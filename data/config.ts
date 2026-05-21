@@ -143,9 +143,9 @@ export const pressKit = {
     }
   },
   stats: [
-    { value: "+125K", label: "abonnés réseaux", detail: "Communauté cumulée sur les réseaux sociaux." },
+    { value: "+125K", label: "abonnés réseaux sociaux", detail: "Communauté cumulée sur les réseaux sociaux." },
     { value: "+5000", label: "clientes", detail: "Clientes ayant participé à une Bringue." },
-    { value: "+200", label: "soirées 2025", detail: "Soirées organisées en 2025." },
+    { value: "+200", label: "soirées en 2025", detail: "Soirées organisées en 2025." },
     { value: "N°1", label: "girls only party", detail: "Référence des soirées réservées aux femmes." }
   ],
   concept: {

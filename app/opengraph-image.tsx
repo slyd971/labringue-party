@@ -4,14 +4,7 @@ export const alt = "La Bringue — Girls Only Party";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default async function OGImage() {
-  let antonFont: ArrayBuffer | null = null;
-  try {
-    antonFont = await fetch(
-      "https://fonts.gstatic.com/s/anton/v25/1Ptgg87LROyAm0K08i4gS7lu.woff"
-    ).then((r) => r.arrayBuffer());
-  } catch {}
-
+export default function OGImage() {
   return new ImageResponse(
     (
       <div style={{ display: "flex", width: 1200, height: 630 }}>
@@ -20,7 +13,7 @@ export default async function OGImage() {
           justifyContent: "space-between", background: "#f4a3da",
           width: 460, height: 630, padding: "56px 36px",
         }}>
-          <div style={{ fontFamily: "Anton, Impact, sans-serif", fontSize: 52, color: "#1a1518", textTransform: "uppercase", letterSpacing: "0.06em", textAlign: "center" }}>
+          <div style={{ fontFamily: "Impact, sans-serif", fontSize: 54, color: "#1a1518", textTransform: "uppercase", letterSpacing: "0.06em", textAlign: "center", fontWeight: 900 }}>
             La Bringue
           </div>
           <svg viewBox="0 0 80 148" fill="#1a1518" width={130} height={240}>
@@ -31,7 +24,7 @@ export default async function OGImage() {
             <rect x="17" y="105" width="16" height="43" rx="5" />
             <rect x="47" y="105" width="16" height="43" rx="5" />
           </svg>
-          <div style={{ fontFamily: "Anton, Impact, sans-serif", fontSize: 13, color: "#1a1518", textTransform: "uppercase", letterSpacing: "0.22em", opacity: 0.6 }}>
+          <div style={{ fontFamily: "sans-serif", fontSize: 13, color: "#1a1518", textTransform: "uppercase", letterSpacing: "0.22em", opacity: 0.6, fontWeight: 700 }}>
             Girls Only Party
           </div>
         </div>
@@ -39,9 +32,9 @@ export default async function OGImage() {
           display: "flex", flexDirection: "column", justifyContent: "flex-end",
           background: "#111111", width: 740, height: 630, padding: "56px 64px",
         }}>
-          <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
+          <div style={{ display: "flex", flexDirection: "column" }}>
             {["100% meufs.", "100% fun.", "100% safe."].map((line) => (
-              <div key={line} style={{ fontFamily: "Anton, Impact, sans-serif", fontSize: 90, color: "#f4a3da", textTransform: "uppercase", lineHeight: 1.06, letterSpacing: "0.03em" }}>
+              <div key={line} style={{ fontFamily: "Impact, sans-serif", fontSize: 92, color: "#f4a3da", textTransform: "uppercase", lineHeight: 1.06, letterSpacing: "0.02em", fontWeight: 900 }}>
                 {line}
               </div>
             ))}
@@ -52,9 +45,6 @@ export default async function OGImage() {
         </div>
       </div>
     ),
-    {
-      ...size,
-      fonts: antonFont ? [{ name: "Anton", data: antonFont, style: "normal" as const, weight: 400 as const }] : [],
-    }
+    { ...size }
   );
 }

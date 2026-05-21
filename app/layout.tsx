@@ -39,22 +39,13 @@ export const metadata: Metadata = {
       "La Bringue : soirées 100% meufs, 100% fun, 100% safe. +125K abonnées, +200 soirées en 2025, présente dans plus de 10 villes en France, Belgique et Luxembourg.",
     url: siteUrl,
     siteName: "La Bringue",
-    images: [
-      {
-        url: `${siteUrl}/og`,
-        width: 1200,
-        height: 630,
-        alt: "La Bringue — Girls Only Party"
-      }
-    ],
     locale: "fr_FR",
     type: "website"
   },
   twitter: {
     card: "summary_large_image",
-    title: "La Bringue — Soirées Girls Only · Press Kit",
+    title: "La Bringue — Soirées Girls Only 100% Safe | Press Kit",
     description: "100% meufs. 100% fun. 100% safe. +10 villes, France, Belgique & Luxembourg.",
-    images: [`${siteUrl}/og`]
   },
   robots: {
     index: true,

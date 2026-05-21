@@ -34,26 +34,21 @@ export function generateStaticParams() {
   return pressKit.cities.map((city) => ({ slug: city.slug }));
 }
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://labringue-party.vercel.app";
-
 export async function generateMetadata({ params }: CityPageProps): Promise<Metadata> {
   const { slug } = await params;
   const city = getCity(slug);
   if (!city) return {};
-  const ogImage = `${siteUrl}/og`;
   return {
     title: `La Bringue ${city.name}`,
-    description: `La Bringue ${city.name} — soirée girls only 100% safe depuis ${city.editions}. Découvrez l'univers La Bringue dans votre ville.`,
+    description: `La Bringue ${city.name} — soirée girls only 100% fun & safe depuis ${city.editions}. Découvrez l'univers La Bringue dans votre ville.`,
     openGraph: {
       title: `La Bringue ${city.name} — Girls Only Party`,
       description: `Soirée girls only 100% fun & safe à ${city.name} depuis ${city.editions}. +125K abonnées, communauté bienveillante.`,
-      images: [{ url: ogImage, width: 1200, height: 630, alt: "La Bringue — Girls Only Party" }]
     },
     twitter: {
       card: "summary_large_image",
-      title: `La Bringue ${city.name}`,
+      title: `La Bringue ${city.name} — Girls Only Party`,
       description: `Soirée girls only 100% safe à ${city.name} depuis ${city.editions}.`,
-      images: [ogImage]
     }
   };
 }

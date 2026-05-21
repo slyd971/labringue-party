@@ -78,7 +78,7 @@ const premiumVisuals = {
 export const pressKit = {
   eventName: "La Bringue.",
   tagline: "100% meufs. 100% fun. 100% safe.",
-  badge: "Girls only party - Safe place - France & Belgique",
+  badge: "Girls only party - Safe place - France, Belgique & Luxembourg",
   description:
     "La Bringue rassemble les Bringueuses dans des lieux safe pour danser, s'amuser, se lâcher entre copines et se faire de nouvelles amies.",
   heroVideo: {
@@ -145,7 +145,7 @@ export const pressKit = {
   stats: [
     { value: "+125K", label: "abonnés réseaux", detail: "Communauté cumulée sur les réseaux sociaux." },
     { value: "+5000", label: "clientes", detail: "Clientes ayant participé à une Bringue." },
-    { value: "+20", label: "soirées", detail: "Soirées organisées depuis le lancement." },
+    { value: "+200", label: "soirées 2025", detail: "Soirées organisées en 2025." },
     { value: "N°1", label: "girls only party", detail: "Référence des soirées réservées aux femmes." }
   ],
   concept: {

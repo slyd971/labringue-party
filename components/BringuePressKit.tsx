@@ -163,7 +163,7 @@ export function BringuePressKit() {
                 className="px-3 text-center"
               >
                 <AnimatedStatValue value={stat.value} delay={index * 0.08} />
-                <p className="mx-auto mt-3 max-w-[18ch] font-sans text-[10px] font-black uppercase leading-5 tracking-[0.22em] text-black/72 sm:text-[11px]">
+                <p className="mx-auto mt-3 whitespace-nowrap font-sans text-[9px] font-black uppercase leading-5 tracking-[0.10em] text-black/72 sm:max-w-[18ch] sm:text-[11px] sm:tracking-[0.22em]">
                   {stat.label}
                 </p>
               </motion.div>

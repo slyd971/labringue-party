@@ -21,11 +21,11 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://labringue-party.ver
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "La Bringue — Soirées Girls Only · Press Kit",
-    template: "%s · La Bringue"
+    default: "La Bringue — Soirées Girls Only 100% Safe | Press Kit",
+    template: "%s | La Bringue Girls Only Party"
   },
   description:
-    "La Bringue est le concept de soirées 100% femmes, 100% fun, 100% safe. Implanté dans plus de 10 villes en France, Belgique et Luxembourg. Press kit pour sponsors, lieux et partenaires.",
+    "La Bringue : soirées 100% femmes, 100% fun, 100% safe. +125K abonnées, +200 soirées en 2025 dans plus de 10 villes en France, Belgique et Luxembourg. Press kit pour sponsors et partenaires.",
   keywords: [
     "La Bringue", "soirée girls only", "soirée femmes", "safe place", "nightlife",
     "Paris", "Lille", "Lyon", "Marseille", "Bordeaux", "Bruxelles", "Luxembourg",
@@ -34,9 +34,9 @@ export const metadata: Metadata = {
   authors: [{ name: "La Bringue" }],
   creator: "La Bringue",
   openGraph: {
-    title: "La Bringue — Soirées Girls Only · Press Kit",
+    title: "La Bringue — Soirées Girls Only 100% Safe | Press Kit",
     description:
-      "La Bringue : soirées 100% meufs, 100% fun, 100% safe. +10 villes, +125K abonnés, +200 soirées en 2025.",
+      "La Bringue : soirées 100% meufs, 100% fun, 100% safe. +125K abonnées, +200 soirées en 2025, présente dans plus de 10 villes en France, Belgique et Luxembourg.",
     url: siteUrl,
     siteName: "La Bringue",
     images: [

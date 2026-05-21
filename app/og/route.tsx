@@ -2,10 +2,14 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 
-export async function GET() {
+export async function GET(req: Request) {
+  const host = new URL(req.url).origin;
+
   const antonFont = await fetch(
     "https://fonts.gstatic.com/s/anton/v25/1Ptgg87LROyAm0K08i4gS7lu.woff"
   ).then((r) => r.arrayBuffer());
+
+  const logoUrl = `${host}/logo/logo-villes.png`;
 
   return new ImageResponse(
     (
@@ -24,7 +28,7 @@ export async function GET() {
           }}
         >
           <img
-            src="https://labringue-party.vercel.app/logo/logo-villes.png"
+            src={logoUrl}
             style={{ width: 320, objectFit: "contain" }}
           />
           {/* Woman silhouette */}

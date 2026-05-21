@@ -26,7 +26,7 @@ export function BringueFooter() {
               alt="La Bringue"
               width={900}
               height={182}
-              className="h-auto w-28 sm:w-36"
+              className="h-auto w-28 brightness-0 invert sm:w-36"
             />
             <p className="mt-3 font-sans text-[0.82rem] leading-6 text-[#666]">
               Girls Only Party — France, Belgique & Luxembourg

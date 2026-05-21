@@ -1,11 +1,14 @@
 import { ImageResponse } from "next/og";
 
-export const runtime = "edge";
-
 export async function GET() {
-  const antonFont = await fetch(
-    "https://fonts.gstatic.com/s/anton/v25/1Ptgg87LROyAm0K08i4gS7lu.woff"
-  ).then((r) => r.arrayBuffer());
+  let antonFont: ArrayBuffer | null = null;
+  try {
+    antonFont = await fetch(
+      "https://fonts.gstatic.com/s/anton/v25/1Ptgg87LROyAm0K08i4gS7lu.woff"
+    ).then((r) => r.arrayBuffer());
+  } catch {
+    // continue without custom font
+  }
 
   return new ImageResponse(
     (
@@ -26,7 +29,7 @@ export async function GET() {
           {/* Logo text */}
           <div
             style={{
-              fontFamily: "Anton",
+              fontFamily: "Anton, Impact, sans-serif",
               fontSize: 52,
               color: "#1a1518",
               textTransform: "uppercase",
@@ -49,7 +52,7 @@ export async function GET() {
 
           <div
             style={{
-              fontFamily: "Anton",
+              fontFamily: "Anton, Impact, sans-serif",
               fontSize: 14,
               color: "#1a1518",
               textTransform: "uppercase",
@@ -79,7 +82,7 @@ export async function GET() {
               <div
                 key={line}
                 style={{
-                  fontFamily: "Anton",
+                  fontFamily: "Anton, Impact, sans-serif",
                   fontSize: 90,
                   color: "#f4a3da",
                   textTransform: "uppercase",
@@ -109,7 +112,9 @@ export async function GET() {
     {
       width: 1200,
       height: 630,
-      fonts: [{ name: "Anton", data: antonFont, style: "normal", weight: 400 }],
+      fonts: antonFont
+        ? [{ name: "Anton", data: antonFont, style: "normal" as const, weight: 400 as const }]
+        : [],
     }
   );
 }

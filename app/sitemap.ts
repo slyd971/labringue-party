@@ -1,19 +1,16 @@
 import type { MetadataRoute } from "next";
 import { pressKit } from "@/data/config";
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://la-bringue.example.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://labringue-party.vercel.app";
 
+export default function sitemap(): MetadataRoute.Sitemap {
   return [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      priority: 1
-    },
+    { url: siteUrl, lastModified: new Date(), priority: 1, changeFrequency: "weekly" },
     ...pressKit.cities.map((city) => ({
-      url: `${baseUrl}/cities/${city.slug}`,
+      url: `${siteUrl}/cities/${city.slug}`,
       lastModified: new Date(),
-      priority: 0.8
+      priority: 0.8,
+      changeFrequency: "monthly" as const
     }))
   ];
 }

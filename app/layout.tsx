@@ -16,26 +16,35 @@ const inter = Inter({
   display: "swap"
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://labringue-party.vercel.app";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://la-bringue.example.com"),
+  metadataBase: new URL(siteUrl),
   title: {
-    default: "La Bringue — Press Kit Organisateur de Soirées Premium",
-    template: "%s — La Bringue"
+    default: "La Bringue — Soirées Girls Only · Press Kit",
+    template: "%s · La Bringue"
   },
   description:
-    "Press kit premium et immersif pour La Bringue, concept girls-only nightlife pensé pour sponsors, investisseurs, lieux et partenaires médias.",
+    "La Bringue est le concept de soirées 100% femmes, 100% fun, 100% safe. Implanté dans plus de 10 villes en France, Belgique et Luxembourg. Press kit pour sponsors, lieux et partenaires.",
+  keywords: [
+    "La Bringue", "soirée girls only", "soirée femmes", "safe place", "nightlife",
+    "Paris", "Lille", "Lyon", "Marseille", "Bordeaux", "Bruxelles", "Luxembourg",
+    "press kit", "organisateur soirées", "concept féminin"
+  ],
+  authors: [{ name: "La Bringue" }],
+  creator: "La Bringue",
   openGraph: {
-    title: "La Bringue — Press Kit Organisateur de Soirées Premium",
+    title: "La Bringue — Soirées Girls Only · Press Kit",
     description:
-      "Un mini-site éditorial, cinématographique et premium pour présenter un concept de soirée girls-only.",
-    url: "https://la-bringue.example.com",
+      "La Bringue : soirées 100% meufs, 100% fun, 100% safe. +10 villes, +125K abonnés, +200 soirées en 2025.",
+    url: siteUrl,
     siteName: "La Bringue",
     images: [
       {
-        url: "/charte%20graphique/charte-graphique-2.jpeg",
-        width: 740,
-        height: 1600,
-        alt: "La Bringue visual identity"
+        url: `${siteUrl}/og`,
+        width: 1200,
+        height: 630,
+        alt: "La Bringue — Girls Only Party"
       }
     ],
     locale: "fr_FR",
@@ -43,9 +52,14 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "La Bringue — Press Kit Organisateur de Soirées Premium",
-    description: "Concept girls-only nightlife premium, Paris et international.",
-    images: ["/charte%20graphique/charte-graphique-2.jpeg"]
+    title: "La Bringue — Soirées Girls Only · Press Kit",
+    description: "100% meufs. 100% fun. 100% safe. +10 villes, France, Belgique & Luxembourg.",
+    images: [`${siteUrl}/og`]
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true }
   }
 };
 

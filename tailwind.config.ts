@@ -18,8 +18,8 @@ const config: Config = {
         bone: "#FFFFFF"
       },
       fontFamily: {
-        display: ["Anton", "Bebas Neue", "Impact", "Haettenschweiler", "Arial Narrow", "sans-serif"],
-        sans: ["Inter", "Helvetica Neue", "Arial", "sans-serif"],
+        display: ["var(--font-anton)", "Anton", "Impact", "sans-serif"],
+        sans: ["var(--font-inter)", "Inter", "Helvetica Neue", "Arial", "sans-serif"],
         editorial: ["Playfair Display", "Georgia", "serif"]
       },
       boxShadow: {

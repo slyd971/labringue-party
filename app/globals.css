@@ -49,7 +49,7 @@ body::before {
 }
 
 .display-type {
-  font-family: Anton, "Bebas Neue", Impact, Haettenschweiler, "Arial Narrow", sans-serif;
+  font-family: var(--font-anton), Anton, Impact, sans-serif;
   letter-spacing: 0;
 }
 
@@ -92,7 +92,7 @@ body::before {
 }
 
 .hero-name {
-  font-family: Anton, "Bebas Neue", Impact, Haettenschweiler, "Arial Narrow", sans-serif;
+  font-family: var(--font-anton), Anton, Impact, sans-serif;
 }
 
 .line-button {

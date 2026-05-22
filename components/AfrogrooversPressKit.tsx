@@ -303,9 +303,9 @@ export function AfrogrooversPressKit() {
 
         <section id="formats" className="border-y border-[#F5F1E8]/10 bg-[#0D0F13] py-10 sm:py-12 lg:py-16">
           <SectionReveal className="shell">
-            <p className="font-sans text-[10px] font-black uppercase tracking-[0.32em] text-[#F3A623]">Formats de soiree</p>
+            <p className="font-sans text-[10px] font-black uppercase tracking-[0.32em] text-[#F3A623]">Formats de soirée</p>
             <h2 className="mt-4 max-w-[22ch] font-bebas text-[2.8rem] uppercase leading-[0.94] tracking-[0.03em] text-[#F5F1E8] sm:text-[4rem]">
-              Deux facons de vivre le groove.
+              Deux façons de vivre le groove.
             </h2>
           </SectionReveal>
 
@@ -339,7 +339,7 @@ export function AfrogrooversPressKit() {
           <SectionReveal className="shell">
             <p className="font-sans text-[10px] font-black uppercase tracking-[0.32em] text-[#D86F4A]">DJ Lineup</p>
             <h2 className="mt-4 max-w-[20ch] font-bebas text-[2.8rem] uppercase leading-[0.94] tracking-[0.03em] sm:text-[4rem]">
-              Ils ont porte la vibe AfroGroovers.
+              Ils ont porté la vibe AfroGroovers.
             </h2>
           </SectionReveal>
           <div className="shell mt-6 grid gap-5 md:grid-cols-2">
@@ -367,12 +367,12 @@ export function AfrogrooversPressKit() {
 
         <section id="videos" className="py-10 sm:py-12 lg:py-16">
           <SectionReveal className="shell border-y border-[#F5F1E8]/10 py-8">
-            <p className="font-sans text-[10px] font-black uppercase tracking-[0.32em] text-[#F3A623]">Videos</p>
+            <p className="font-sans text-[10px] font-black uppercase tracking-[0.32em] text-[#F3A623]">Vidéos</p>
             <h2 className="mt-4 max-w-[20ch] font-bebas text-[2.8rem] uppercase leading-[0.94] tracking-[0.03em] text-[#F5F1E8] sm:text-[4rem]">
-              L'energie AfroGroovers en mouvement.
+              L'énergie AfroGroovers en mouvement.
             </h2>
             <p className="mt-4 max-w-2xl text-[1rem] leading-7 text-[#F5F1E8]/68">
-              Quatre moments courts pour capter l'ambiance: arrivee, dancefloor, communaute et peak time.
+              Quatre moments courts pour capter l'ambiance : arrivée, dancefloor, communauté et peak time.
             </p>
           </SectionReveal>
           <div className="shell mt-6 grid gap-3 md:grid-cols-2 lg:grid-cols-4">
@@ -399,7 +399,7 @@ export function AfrogrooversPressKit() {
                 transition={{ duration: 0.58, delay: index * 0.05, ease: [0.22, 1, 0.36, 1] }}
                 className="mb-4 break-inside-avoid overflow-hidden border border-[#F5F1E8]/10 bg-[#F5F1E8]/[0.03]"
               >
-                <Image src={image.src} alt={image.alt} width={index % 2 === 0 ? 1600 : 1080} height={index % 2 === 0 ? 1067 : 1433} className="h-auto w-full object-cover" unoptimized />
+                <Image src={image.src} alt={image.alt} width={image.w} height={image.h} className="h-auto w-full object-cover" unoptimized />
               </motion.figure>
             ))}
           </div>

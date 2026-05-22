@@ -98,6 +98,8 @@ export const afrogrooversKit = {
     title: "Construire la prochaine experience AfroGroovers.",
     body:
       "Pour accueillir une edition, imaginer une collaboration ou connecter une marque a la communaute AfroGroovers.",
+    email: "contact@chezceliaprod.fr",
+    whatsapp: "+33652910427",
     people: [
       {
         name: "Celia",

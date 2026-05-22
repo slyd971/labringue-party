@@ -26,7 +26,7 @@ export const afrogrooversKit = {
     ],
     quote:
       "AfroGroovers transforme la soirée en expérience sociale : chaleureuse, sélective, musicale et profondément conviviale.",
-    image: "/afrogroovers/gallery/gallery-1.jpg"
+    image: "/afrogroovers/concept/concept-photo.jpg"
   },
   formats: [
     {

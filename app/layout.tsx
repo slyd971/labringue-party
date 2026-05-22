@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import { Anton, Inter } from "next/font/google";
+import { Anton, Bebas_Neue, Inter, Oswald } from "next/font/google";
 import "./globals.css";
-import { BringueFooter } from "@/components/BringueFooter";
 
 const anton = Anton({
   weight: "400",
@@ -13,6 +12,19 @@ const anton = Anton({
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  display: "swap"
+});
+
+const bebas = Bebas_Neue({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-bebas",
+  display: "swap"
+});
+
+const oswald = Oswald({
+  subsets: ["latin"],
+  variable: "--font-oswald",
   display: "swap"
 });
 
@@ -60,11 +72,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className={`${anton.variable} ${inter.variable}`}>
-      <body>
-        {children}
-        <BringueFooter />
-      </body>
+    <html lang="fr" className={`${anton.variable} ${inter.variable} ${bebas.variable} ${oswald.variable}`}>
+      <body>{children}</body>
     </html>
   );
 }

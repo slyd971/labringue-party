@@ -1,0 +1,444 @@
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowUpRight, Instagram } from "lucide-react";
+import { animate, motion, useInView } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { afrogrooversKit } from "@/data/afrogroovers";
+import { SectionReveal } from "./SectionReveal";
+
+const navLinks = [
+  { href: "#concept", label: "Concept" },
+  { href: "#formats", label: "Formats" },
+  { href: "#lineup", label: "Lineup" },
+  { href: "#videos", label: "Videos" },
+  { href: "#gallery", label: "Gallery" },
+  { href: "#contact", label: "Contact" }
+];
+
+function BgVideo({ src, poster, className }: { src: string; poster?: string; className?: string }) {
+  return (
+    <video autoPlay muted loop playsInline preload="auto" poster={poster} className={className} aria-hidden="true">
+      <source src={src} type="video/mp4" />
+    </video>
+  );
+}
+
+function AnimatedStatValue({
+  value,
+  delay = 0,
+  className = "text-[#101218]"
+}: {
+  value: string;
+  delay?: number;
+  className?: string;
+}) {
+  const ref = useRef<HTMLParagraphElement>(null);
+  const isInView = useInView(ref, { once: true, amount: 0.65 });
+  const match = value.match(/^(.*?)(\d+(?:[.,]\d+)?)(.*)$/);
+  const prefix = match?.[1] ?? "";
+  const target = Number(match?.[2]?.replace(",", ".") ?? 0);
+  const suffix = match?.[3] ?? value;
+  const [displayValue, setDisplayValue] = useState("0");
+
+  useEffect(() => {
+    if (!isInView) return;
+
+    const controls = animate(0, target, {
+      duration: 1.25,
+      delay,
+      ease: [0.22, 1, 0.36, 1],
+      onUpdate: (latest) => setDisplayValue(Math.round(latest).toString())
+    });
+
+    return () => controls.stop();
+  }, [delay, isInView, target]);
+
+  return (
+    <p ref={ref} className={`font-bebas text-[4.1rem] uppercase leading-none sm:text-[5.8rem] lg:text-[7rem] ${className}`}>
+      {prefix}
+      {displayValue}
+      {suffix}
+    </p>
+  );
+}
+
+function AfrogrooversHeader() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [hasScrolled, setHasScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setHasScrolled(window.scrollY > 10);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <header className="fixed inset-x-0 top-0 z-50 px-3 pt-2 sm:px-6">
+      <nav
+        className={`mx-auto flex h-20 max-w-[1440px] items-center justify-between border px-4 py-0 backdrop-blur-md transition sm:h-24 ${
+          hasScrolled ? "border-[#F3A623]/25 bg-[#101218]/86" : "border-white/10 bg-[#101218]/28"
+        }`}
+      >
+        <Link href="/afrogroovers" className="relative block h-24 w-24 -my-3 overflow-hidden sm:h-32 sm:w-32 sm:-my-5">
+          <Image
+            src={afrogrooversKit.headerLogo}
+            alt="AfroGroovers"
+            fill
+            sizes="(max-width: 640px) 96px, 128px"
+            className="object-contain"
+            priority
+            unoptimized
+          />
+        </Link>
+
+        <div className="hidden items-center gap-6 font-sans text-[10px] font-black uppercase tracking-[0.24em] text-[#F5F1E8]/70 md:flex">
+          {navLinks.map((link) => (
+            <Link key={link.href} href={link.href} className="transition hover:text-[#F3A623]">
+              {link.label}
+            </Link>
+          ))}
+        </div>
+
+        <button
+          type="button"
+          aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
+          aria-expanded={isOpen}
+          onClick={() => setIsOpen((open) => !open)}
+          className="grid h-10 w-10 place-items-center border border-white/15 text-[#F5F1E8] md:hidden"
+        >
+          <span className="grid gap-1.5">
+            <span className={`h-px w-5 bg-current transition ${isOpen ? "translate-y-[7px] rotate-45" : ""}`} />
+            <span className={`h-px w-5 bg-current transition ${isOpen ? "opacity-0" : ""}`} />
+            <span className={`h-px w-5 bg-current transition ${isOpen ? "-translate-y-[7px] -rotate-45" : ""}`} />
+          </span>
+        </button>
+      </nav>
+
+      {isOpen ? (
+        <div className="mx-auto mt-2 grid max-w-[1440px] gap-3 border border-[#F3A623]/25 bg-[#101218]/94 p-4 text-right backdrop-blur-md md:hidden">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={() => setIsOpen(false)}
+              className="font-sans text-[11px] font-black uppercase tracking-[0.24em] text-[#F5F1E8]"
+            >
+              {link.label}
+            </Link>
+          ))}
+        </div>
+      ) : null}
+    </header>
+  );
+}
+
+function VideoTile({
+  video,
+  index
+}: {
+  video: (typeof afrogrooversKit.videos)[number];
+  index: number;
+}) {
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 26 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.62, delay: index * 0.07, ease: [0.22, 1, 0.36, 1] }}
+      className="group relative min-h-[380px] overflow-hidden border border-[#F5F1E8]/10 bg-[#101218] sm:min-h-[460px]"
+    >
+      <BgVideo src={video.src} className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(16,18,24,0.05),rgba(16,18,24,0.32)_42%,rgba(16,18,24,0.92))]" />
+      <div className="absolute inset-x-0 bottom-0 p-5">
+        <p className="font-sans text-[10px] font-black uppercase tracking-[0.28em] text-[#F3A623]">{video.category}</p>
+        <h3 className="mt-3 font-bebas text-[2.6rem] uppercase leading-none tracking-[0.04em] text-[#F5F1E8] sm:text-[3rem]">
+          {video.title}
+        </h3>
+        <p className="mt-3 max-w-[18rem] text-[0.9rem] leading-6 text-[#F5F1E8]/72">{video.description}</p>
+      </div>
+    </motion.article>
+  );
+}
+
+function AfrogrooversFooter() {
+  return (
+    <footer className="border-t border-[#F5F1E8]/10 bg-[#101218] py-8 text-[#F5F1E8]">
+      <div className="shell flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+        <p className="font-bebas text-2xl uppercase tracking-[0.08em]">
+          Afro<span className="text-[#F3A623]">Groovers</span>
+        </p>
+        <a
+          href={afrogrooversKit.instagram}
+          target="_blank"
+          rel="noreferrer noopener"
+          className="inline-flex w-fit items-center gap-2 font-sans text-[10px] font-black uppercase tracking-[0.24em] text-[#F5F1E8]/70 transition hover:text-[#F3A623]"
+        >
+          <Instagram className="size-4" />
+          Instagram
+        </a>
+      </div>
+    </footer>
+  );
+}
+
+export function AfrogrooversPressKit() {
+  return (
+    <>
+      <main className="overflow-x-clip bg-[#101218] text-[#F5F1E8]">
+        <AfrogrooversHeader />
+
+        <section className="relative flex min-h-[92svh] items-end overflow-hidden pb-8 pt-24 sm:min-h-screen sm:pb-10">
+          <BgVideo
+            src={afrogrooversKit.heroVideo.src}
+            poster={afrogrooversKit.heroVideo.poster}
+            className="absolute inset-0 h-full w-full object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(16,18,24,0.22),rgba(16,18,24,0.58)_55%,rgba(16,18,24,0.96)),linear-gradient(90deg,rgba(16,18,24,0.72),rgba(16,18,24,0.16)_48%,rgba(31,90,59,0.42))]" />
+          <div className="absolute bottom-0 left-0 right-0 h-24 bg-[linear-gradient(180deg,transparent,#101218)]" />
+
+          <SectionReveal className="shell relative z-10">
+            <p className="flex flex-wrap items-center gap-x-3 gap-y-2 font-sans text-sm font-black uppercase tracking-[0.26em] text-[#F3A623] sm:text-base lg:text-lg">
+              <span>Groove</span>
+              <span className="text-[#D86F4A]">*</span>
+              <span>Afrobeats</span>
+              <span className="text-[#D86F4A]">*</span>
+              <span>Love</span>
+            </p>
+            <h1 className="mt-5 max-w-[9ch] font-bebas text-[clamp(5.2rem,17vw,15rem)] uppercase leading-[0.78] tracking-[0.03em] text-[#F5F1E8]">
+              Afro Groovers
+            </h1>
+            <div className="mt-6 grid gap-5 border-t border-[#F5F1E8]/15 pt-5 lg:grid-cols-[1fr_0.8fr] lg:items-end">
+              <p className="max-w-2xl text-[1rem] leading-7 text-[#F5F1E8]/78 sm:text-[1.12rem] sm:leading-8">
+                {afrogrooversKit.description}
+              </p>
+              <div className="flex flex-wrap gap-3 lg:justify-end">
+                <a
+                  href="#contact"
+                  className="inline-flex min-h-12 items-center gap-3 bg-[#1F5A3B] px-5 font-sans text-[10px] font-black uppercase tracking-[0.22em] text-[#F5F1E8] transition hover:bg-[#2C6F4D]"
+                >
+                  RSVP / Contact
+                  <ArrowUpRight className="size-4" />
+                </a>
+                <a
+                  href={afrogrooversKit.instagram}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="inline-flex min-h-12 items-center gap-3 border border-[#F5F1E8]/20 px-5 font-sans text-[10px] font-black uppercase tracking-[0.22em] text-[#F5F1E8] transition hover:border-[#F3A623] hover:text-[#F3A623]"
+                >
+                  <Instagram className="size-4" />
+                  Instagram
+                </a>
+              </div>
+            </div>
+          </SectionReveal>
+        </section>
+
+        <section className="relative overflow-hidden bg-[#F3A623] py-10 text-[#101218] sm:py-12 lg:py-14">
+          <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(16,18,24,.22)_1px,transparent_1px),linear-gradient(90deg,rgba(16,18,24,.22)_1px,transparent_1px)] [background-size:88px_88px]" />
+          <div className="shell relative grid gap-6 md:grid-cols-3">
+            {afrogrooversKit.stats.map((stat, index) => (
+              <motion.article
+                key={stat.label}
+                initial={{ opacity: 0, y: 22 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.4 }}
+                transition={{ duration: 0.62, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                className="border-l border-[#101218]/28 pl-4"
+              >
+                <AnimatedStatValue value={stat.value} delay={index * 0.08} />
+                <p className="font-sans text-[10px] font-black uppercase tracking-[0.2em] text-[#101218]/78 sm:text-[11px]">
+                  {stat.label}
+                </p>
+                <p className="mt-3 max-w-[24rem] text-[0.92rem] leading-6 text-[#101218]/68">{stat.detail}</p>
+              </motion.article>
+            ))}
+          </div>
+        </section>
+
+        <section id="concept" className="shell py-10 sm:py-12 lg:py-16">
+          <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+            <SectionReveal>
+              <div className="relative aspect-[4/5] overflow-hidden">
+                <Image src={afrogrooversKit.concept.image} alt={afrogrooversKit.concept.title} fill sizes="(max-width: 1024px) 100vw, 42vw" className="object-cover" priority unoptimized />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent,rgba(16,18,24,0.42))]" />
+              </div>
+            </SectionReveal>
+
+            <SectionReveal delay={0.08} className="min-w-0 space-y-7">
+              <p className="font-sans text-[10px] font-black uppercase tracking-[0.32em] text-[#F3A623]">
+                {afrogrooversKit.concept.eyebrow}
+              </p>
+              <h2 className="max-w-[20ch] font-bebas text-[2.8rem] uppercase leading-[0.94] tracking-[0.03em] text-[#F5F1E8] sm:text-[4.1rem] lg:text-[5rem]">
+                {afrogrooversKit.concept.title}
+              </h2>
+              <div className="grid gap-6 border-t border-[#F5F1E8]/10 pt-6 md:grid-cols-2">
+                {afrogrooversKit.concept.body.map((paragraph) => (
+                  <p key={paragraph} className="text-[1rem] leading-7 text-[#F5F1E8]/72 sm:text-[1.05rem] sm:leading-8">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+              <blockquote className="border-l-2 border-[#F3A623] pl-5 text-[1.05rem] italic leading-8 text-[#F3A623]">
+                {afrogrooversKit.concept.quote}
+              </blockquote>
+            </SectionReveal>
+          </div>
+        </section>
+
+        <section id="formats" className="border-y border-[#F5F1E8]/10 bg-[#0D0F13] py-10 sm:py-12 lg:py-16">
+          <SectionReveal className="shell">
+            <p className="font-sans text-[10px] font-black uppercase tracking-[0.32em] text-[#F3A623]">Formats de soiree</p>
+            <h2 className="mt-4 max-w-[22ch] font-bebas text-[2.8rem] uppercase leading-[0.94] tracking-[0.03em] text-[#F5F1E8] sm:text-[4rem]">
+              Deux facons de vivre le groove.
+            </h2>
+          </SectionReveal>
+
+          <div className="shell mt-6 grid gap-4 md:grid-cols-2">
+            {afrogrooversKit.formats.map((format, index) => (
+              <motion.article
+                key={format.name}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.18 }}
+                transition={{ duration: 0.6, delay: index * 0.09, ease: [0.22, 1, 0.36, 1] }}
+                className="grid overflow-hidden border border-[#F5F1E8]/10 bg-[#101218] sm:grid-cols-[0.88fr_1fr]"
+              >
+                <div className="relative aspect-[1080/1352] bg-[#0D0F13] sm:aspect-auto">
+                  <Image src={format.image} alt={format.name} fill sizes="(max-width: 768px) 100vw, 34vw" className="object-contain" unoptimized />
+                  <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent,rgba(16,18,24,0.22))]" />
+                </div>
+                <div className="flex flex-col justify-end p-5 sm:p-6">
+                  <p className="font-sans text-[10px] font-black uppercase tracking-[0.28em] text-[#F3A623]">{format.role}</p>
+                  <h3 className="mt-4 font-bebas text-[4rem] uppercase leading-none tracking-[0.04em] text-[#F5F1E8] sm:text-[5rem]">
+                    {format.name}
+                  </h3>
+                  <p className="mt-5 text-[0.96rem] leading-7 text-[#F5F1E8]/70">{format.note}</p>
+                </div>
+              </motion.article>
+            ))}
+          </div>
+        </section>
+
+        <section id="lineup" className="border-y border-[#F5F1E8]/10 bg-[#F5F1E8] py-10 text-[#101218] sm:py-12 lg:py-16">
+          <SectionReveal className="shell">
+            <p className="font-sans text-[10px] font-black uppercase tracking-[0.32em] text-[#D86F4A]">DJ Lineup</p>
+            <h2 className="mt-4 max-w-[20ch] font-bebas text-[2.8rem] uppercase leading-[0.94] tracking-[0.03em] sm:text-[4rem]">
+              Ils ont porte la vibe AfroGroovers.
+            </h2>
+          </SectionReveal>
+          <div className="shell mt-6 grid gap-5 md:grid-cols-2">
+            {afrogrooversKit.lineup.map((artist, index) => (
+              <motion.article
+                key={artist.name}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.62, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                className="grid overflow-hidden border-2 border-[#101218] bg-[#F5F1E8] sm:grid-cols-[0.86fr_1fr]"
+              >
+                <div className="relative aspect-[4/5] sm:aspect-auto">
+                  <Image src={artist.image} alt={artist.name} fill sizes="(max-width: 768px) 100vw, 30vw" className="object-cover" unoptimized />
+                </div>
+                <div className="flex flex-col justify-end p-5 sm:p-6">
+                  <p className="font-sans text-[10px] font-black uppercase tracking-[0.26em] text-[#D86F4A]">{artist.role}</p>
+                  <h3 className="mt-4 font-bebas text-[3.2rem] uppercase leading-none tracking-[0.04em] sm:text-[3.6rem]">{artist.name}</h3>
+                  <p className="mt-5 text-[0.96rem] leading-7 text-[#101218]/68">{artist.note}</p>
+                </div>
+              </motion.article>
+            ))}
+          </div>
+        </section>
+
+        <section id="videos" className="py-10 sm:py-12 lg:py-16">
+          <SectionReveal className="shell border-y border-[#F5F1E8]/10 py-8">
+            <p className="font-sans text-[10px] font-black uppercase tracking-[0.32em] text-[#F3A623]">Videos</p>
+            <h2 className="mt-4 max-w-[20ch] font-bebas text-[2.8rem] uppercase leading-[0.94] tracking-[0.03em] text-[#F5F1E8] sm:text-[4rem]">
+              L'energie AfroGroovers en mouvement.
+            </h2>
+            <p className="mt-4 max-w-2xl text-[1rem] leading-7 text-[#F5F1E8]/68">
+              Quatre moments courts pour capter l'ambiance: arrivee, dancefloor, communaute et peak time.
+            </p>
+          </SectionReveal>
+          <div className="shell mt-6 grid gap-3 md:grid-cols-2 lg:grid-cols-4">
+            {afrogrooversKit.videos.map((video, index) => (
+              <VideoTile key={video.src} video={video} index={index} />
+            ))}
+          </div>
+        </section>
+
+        <section id="gallery" className="shell py-10 sm:py-12 lg:py-16">
+          <SectionReveal className="border-y border-[#F5F1E8]/10 py-8">
+            <p className="font-sans text-[10px] font-black uppercase tracking-[0.32em] text-[#F3A623]">Immersion</p>
+            <h2 className="mt-4 max-w-[18ch] font-bebas text-[2.8rem] uppercase leading-[0.94] tracking-[0.03em] text-[#F5F1E8] sm:text-[4rem]">
+              Nos Afrogroovers en images.
+            </h2>
+          </SectionReveal>
+          <div className="mt-6 columns-1 gap-4 sm:columns-2 lg:columns-3">
+            {afrogrooversKit.gallery.map((image, index) => (
+              <motion.figure
+                key={image.src}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.12 }}
+                transition={{ duration: 0.58, delay: index * 0.05, ease: [0.22, 1, 0.36, 1] }}
+                className="mb-4 break-inside-avoid overflow-hidden border border-[#F5F1E8]/10 bg-[#F5F1E8]/[0.03]"
+              >
+                <Image src={image.src} alt={image.alt} width={index % 2 === 0 ? 1600 : 1080} height={index % 2 === 0 ? 1067 : 1433} className="h-auto w-full object-cover" unoptimized />
+              </motion.figure>
+            ))}
+          </div>
+        </section>
+
+        <section id="contact" className="bg-[#F3A623] py-10 text-[#101218] sm:py-12 lg:py-16">
+          <SectionReveal className="shell">
+            <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
+              <div>
+                <p className="font-sans text-[10px] font-black uppercase tracking-[0.32em] text-[#101218]/62">{afrogrooversKit.contact.eyebrow}</p>
+                <h2 className="mt-4 max-w-[18ch] font-bebas text-[2.8rem] uppercase leading-[0.94] tracking-[0.03em] sm:text-[4rem]">
+                  {afrogrooversKit.contact.title}
+                </h2>
+                <p className="mt-5 max-w-[31rem] text-[1rem] leading-7 text-[#101218]/72 sm:text-[1.08rem] sm:leading-8">
+                  {afrogrooversKit.contact.body}
+                </p>
+              </div>
+
+              <div className="grid gap-4 md:grid-cols-2">
+                {afrogrooversKit.contact.people.map((person, index) => (
+                  <motion.a
+                    key={person.name}
+                    href={person.href}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.58, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                    className="group overflow-hidden border-2 border-[#101218] bg-[#F5F1E8]"
+                  >
+                    <span className="relative block aspect-[4/5] overflow-hidden">
+                      <Image src={person.image} alt={person.name} fill sizes="(max-width: 768px) 100vw, 28vw" className="object-cover transition duration-700 group-hover:scale-[1.04]" unoptimized />
+                    </span>
+                    <span className="block p-5">
+                      <span className="block font-bebas text-[2.6rem] uppercase leading-none tracking-[0.04em] sm:text-[3rem]">{person.name}</span>
+                      <span className="mt-2 block font-sans text-[10px] font-black uppercase tracking-[0.2em] text-[#D86F4A]">
+                        {person.instagram}
+                      </span>
+                      <span className="mt-2 flex items-center justify-between gap-4 font-sans text-[10px] font-black uppercase tracking-[0.22em] text-[#101218]/68">
+                        {person.role}
+                        <ArrowUpRight className="size-4 shrink-0" />
+                      </span>
+                    </span>
+                  </motion.a>
+                ))}
+              </div>
+            </div>
+          </SectionReveal>
+        </section>
+      </main>
+      <AfrogrooversFooter />
+    </>
+  );
+}

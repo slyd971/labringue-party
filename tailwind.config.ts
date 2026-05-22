@@ -19,6 +19,8 @@ const config: Config = {
       },
       fontFamily: {
         display: ["var(--font-anton)", "Anton", "Impact", "sans-serif"],
+        bebas: ["var(--font-bebas)", "Bebas Neue", "Impact", "sans-serif"],
+        oswald: ["var(--font-oswald)", "Oswald", "Arial Narrow", "sans-serif"],
         sans: ["var(--font-inter)", "Inter", "Helvetica Neue", "Arial", "sans-serif"],
         editorial: ["Playfair Display", "Georgia", "serif"]
       },

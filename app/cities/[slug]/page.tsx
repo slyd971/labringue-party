@@ -7,6 +7,7 @@ import { GallerySection } from "@/components/GallerySection";
 import { VenuesSection } from "@/components/VenuesSection";
 import { SectionReveal } from "@/components/SectionReveal";
 import { BringueHeader } from "@/components/BringueHeader";
+import { BringueFooter } from "@/components/BringueFooter";
 import { pressKit } from "@/data/config";
 
 type CityPageProps = {
@@ -64,8 +65,9 @@ export default async function CityPage({ params }: CityPageProps) {
     .map((l) => l + ".");
 
   return (
-    <main className="bg-[#050505] text-white">
-      <BringueHeader />
+    <>
+      <main className="bg-[#050505] text-white">
+        <BringueHeader />
 
       {/* Back button — above the split hero, below the fixed header */}
       <div className="relative z-40 flex items-center border-b border-white/10 bg-[#050505] px-4 py-3 pt-[calc(theme(spacing.16)+0.75rem)] sm:px-8 sm:pt-[calc(theme(spacing.20)+0.75rem)] lg:px-12">
@@ -172,6 +174,8 @@ export default async function CityPage({ params }: CityPageProps) {
           </div>
         </SectionReveal>
       </section>
-    </main>
+      </main>
+      <BringueFooter />
+    </>
   );
 }

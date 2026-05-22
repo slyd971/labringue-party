@@ -429,7 +429,7 @@ export function AfrogrooversPressKit() {
               L'énergie Afrogroover en 4k.
             </h2>
             <p className="mt-4 max-w-2xl text-[1rem] leading-7 text-[#F5F1E8]/68">
-              L'énergie AfroGroovers c'est des connexions, des sourires, du groove et cette ambiance qu'on ne retrouve nulle part ailleurs.
+              AfroGroovers c'est des connexions, des sourires, du groove et cette ambiance qu'on ne retrouve nulle part ailleurs.
             </p>
           </SectionReveal>
           <div className="shell mt-6 grid gap-3 md:grid-cols-2 lg:grid-cols-4">

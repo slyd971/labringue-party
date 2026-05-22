@@ -17,10 +17,45 @@ const navLinks = [
   { href: "#contact", label: "Contact" }
 ];
 
-function BgVideo({ src, poster, className }: { src: string; poster?: string; className?: string }) {
+function BgVideo({ src, poster, className, lazy = false }: { src: string; poster?: string; className?: string; lazy?: boolean }) {
+  const ref = useRef<HTMLVideoElement>(null);
+  const [loaded, setLoaded] = useState(!lazy);
+
+  useEffect(() => {
+    if (!lazy) return;
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setLoaded(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [lazy]);
+
+  useEffect(() => {
+    if (loaded && ref.current) {
+      ref.current.play().catch(() => {});
+    }
+  }, [loaded]);
+
   return (
-    <video autoPlay muted loop playsInline preload="auto" poster={poster} className={className} aria-hidden="true">
-      <source src={src} type="video/mp4" />
+    <video
+      ref={ref}
+      muted
+      loop
+      playsInline
+      preload={lazy ? "none" : "metadata"}
+      poster={poster}
+      className={className}
+      aria-hidden="true"
+    >
+      {loaded && <source src={src} type="video/mp4" />}
     </video>
   );
 }
@@ -150,7 +185,7 @@ function VideoTile({
       transition={{ duration: 0.62, delay: index * 0.07, ease: [0.22, 1, 0.36, 1] }}
       className="group relative min-h-[380px] overflow-hidden border border-[#F5F1E8]/10 bg-[#101218] sm:min-h-[460px]"
     >
-      <BgVideo src={video.src} className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]" />
+      <BgVideo src={video.src} lazy className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]" />
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(16,18,24,0.05),rgba(16,18,24,0.32)_42%,rgba(16,18,24,0.92))]" />
       <div className="absolute inset-x-0 bottom-0 p-5">
         <p className="font-sans text-[10px] font-black uppercase tracking-[0.28em] text-[#F3A623]">{video.category}</p>

@@ -426,7 +426,7 @@ export function AfrogrooversPressKit() {
           <SectionReveal className="shell border-y border-[#F5F1E8]/10 py-8">
             <p className="font-sans text-[10px] font-black uppercase tracking-[0.32em] text-[#F3A623]">Vidéos</p>
             <h2 className="mt-4 max-w-[20ch] font-bebas text-[2.8rem] uppercase leading-[0.94] tracking-[0.03em] text-[#F5F1E8] sm:text-[4rem]">
-              L'énergie AfroGroovers en mouvement.
+              L'énergie Afrogroover en 4k.
             </h2>
             <p className="mt-4 max-w-2xl text-[1rem] leading-7 text-[#F5F1E8]/68">
               L'énergie AfroGroovers c'est des connexions, des sourires, du groove et cette ambiance qu'on ne retrouve nulle part ailleurs.

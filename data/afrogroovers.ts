@@ -93,12 +93,28 @@ export const afrogrooversKit = {
     { src: "/afrogroovers/gallery/gallery-2.jpg", alt: "AfroGroovers premium atmosphere" },
     { src: "/afrogroovers/gallery/gallery-1.jpg", alt: "AfroGroovers social moment" }
   ],
+  testimonials: [
+    {
+      quote:
+        "Bonne thérapie même parce que là là c'était vraiment bien. Je sais pas comme en tout cas ça doit être une sélection divine mais euh j'étais vraiment entouré de beau monde et de voilà sans c'était vraiment c'était fluide en fait. C'était fluide. Je sais pas comment je t'ai dit c'était fluide et bien aucun regret en fait.",
+      author: "Un Afrogroover"
+    },
+    {
+      quote:
+        "Je viens de me réveiller, je suis en train de regarder les vidéos. Je suis tellement content. Je reviens hein ! Je ne vous ai pas laissé hein, c'est pas fini hein, ça vient de commencer hein. Je vous préviens que je m'accroche, je ne laisse pas. Ce que vous avez commencé c'est d'où là ? Je suis dedans avec vous. Du moment où j'ai vu le soleil dans ton nom là-bas, moi ça me va. C'est déjà bien.",
+      author: "Un Afrogroover"
+    },
+    {
+      quote: "Il n'y a plus de plaaaaaces pour le 1er mai. Quelle tristesse ! 😢",
+      author: "Une Afrogroover"
+    }
+  ],
   contact: {
     eyebrow: "Contact",
     title: "Construire la prochaine experience AfroGroovers.",
     body:
       "Pour accueillir une edition, imaginer une collaboration ou connecter une marque a la communaute AfroGroovers.",
-    email: "contact@chezceliaprod.fr",
+    email: "afrogroovers@gmail.com",
     whatsapp: "+33652910427",
     people: [
       {

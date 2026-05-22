@@ -405,6 +405,37 @@ export function AfrogrooversPressKit() {
           </div>
         </section>
 
+        <section className="border-y border-[#F5F1E8]/10 bg-[#0D0F13] py-10 sm:py-12 lg:py-16">
+          <SectionReveal className="shell">
+            <p className="font-sans text-[10px] font-black uppercase tracking-[0.32em] text-[#F3A623]">Témoignages</p>
+            <h2 className="mt-4 max-w-[22ch] font-bebas text-[2.8rem] uppercase leading-[0.94] tracking-[0.03em] text-[#F5F1E8] sm:text-[4rem]">
+              Ce que disent les Afrogroovers.
+            </h2>
+          </SectionReveal>
+
+          <div className="shell mt-8 grid gap-4 md:grid-cols-3">
+            {afrogrooversKit.testimonials.map((item, index) => (
+              <motion.blockquote
+                key={index}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.62, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                className="flex flex-col justify-between border border-[#F5F1E8]/10 bg-[#101218] p-6 sm:p-7"
+              >
+                <p className="text-[1rem] leading-7 text-[#F5F1E8]/80 sm:text-[1.05rem] sm:leading-8">
+                  &ldquo;{item.quote}&rdquo;
+                </p>
+                <footer className="mt-6 border-t border-[#F5F1E8]/10 pt-4">
+                  <p className="font-sans text-[10px] font-black uppercase tracking-[0.22em] text-[#F3A623]">
+                    — {item.author}
+                  </p>
+                </footer>
+              </motion.blockquote>
+            ))}
+          </div>
+        </section>
+
         <section id="contact" className="bg-[#F3A623] py-10 text-[#101218] sm:py-12 lg:py-16">
           <SectionReveal className="shell">
             <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">

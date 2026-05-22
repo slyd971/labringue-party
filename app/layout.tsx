@@ -28,36 +28,35 @@ const oswald = Oswald({
   display: "swap"
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://labringue-party.vercel.app";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://afrogroovers.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "La Bringue — Soirées Girls Only 100% Safe | Press Kit",
-    template: "%s | La Bringue Girls Only Party"
+    default: "AFROGROOVERS - Afrobeat & Groove Social Experience",
+    template: "%s | AFROGROOVERS"
   },
   description:
-    "La Bringue : soirées 100% femmes, 100% fun, 100% safe. +125K abonnées, +200 soirées en 2025 dans plus de 10 villes en France, Belgique et Luxembourg. Press kit pour sponsors et partenaires.",
+    "AFROGROOVERS est une experience afro premium melant afrobeats, networking chic, lifestyle et vibes outdoor.",
   keywords: [
-    "La Bringue", "soirée girls only", "soirée femmes", "safe place", "nightlife",
-    "Paris", "Lille", "Lyon", "Marseille", "Bordeaux", "Bruxelles", "Luxembourg",
-    "press kit", "organisateur soirées", "concept féminin"
+    "AFROGROOVERS", "afrobeats", "afrobeat", "amapiano", "afro-house",
+    "networking chic", "rooftop", "open air", "party", "Paris"
   ],
-  authors: [{ name: "La Bringue" }],
-  creator: "La Bringue",
+  authors: [{ name: "AFROGROOVERS" }],
+  creator: "AFROGROOVERS",
   openGraph: {
-    title: "La Bringue — Soirées Girls Only 100% Safe | Press Kit",
+    title: "AFROGROOVERS - Afrobeat & Groove Social Experience",
     description:
-      "La Bringue : soirées 100% meufs, 100% fun, 100% safe. +125K abonnées, +200 soirées en 2025, présente dans plus de 10 villes en France, Belgique et Luxembourg.",
+      "Une experience afro premium, solaire et conviviale qui mixe musique, lifestyle, rencontres et outdoor summer vibes.",
     url: siteUrl,
-    siteName: "La Bringue",
+    siteName: "AFROGROOVERS",
     locale: "fr_FR",
     type: "website"
   },
   twitter: {
     card: "summary_large_image",
-    title: "La Bringue — Soirées Girls Only 100% Safe | Press Kit",
-    description: "100% meufs. 100% fun. 100% safe. +10 villes, France, Belgique & Luxembourg.",
+    title: "AFROGROOVERS - Afrobeat & Groove Social Experience",
+    description: "Groove, Afrobeats, Love.",
   },
   robots: {
     index: true,

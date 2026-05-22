@@ -308,7 +308,6 @@ export function AfrogrooversPressKit() {
         </section>
 
         <section className="relative overflow-hidden bg-[#F3A623] py-10 text-[#101218] sm:py-12 lg:py-14">
-          <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(16,18,24,.22)_1px,transparent_1px),linear-gradient(90deg,rgba(16,18,24,.22)_1px,transparent_1px)] [background-size:88px_88px]" />
           <div className="shell relative grid gap-6 md:grid-cols-3">
             {afrogrooversKit.stats.map((stat, index) => (
               <motion.article

@@ -3,7 +3,7 @@ export const afrogrooversKit = {
   tagline: "Sip & Groove. Afrobeat social experience.",
   badge: "GROOVE * AFROBEATS * LOVE",
   description:
-    "Une expérience afro premium, solaire et conviviale qui mixe musique, lifestyle, rencontres et outdoor summer vibes.",
+    "AfroGroovers, c'est des good vibes, du beau monde, des connexions, de l'afrobeats et une ambiance piquante…",
   instagram: "https://www.instagram.com/afrogroovers/",
   logo: "/afrogroovers/logo/logo.jpeg",
   headerLogo: "/afrogroovers/logo/logo-main.png",

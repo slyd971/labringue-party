@@ -33,21 +33,24 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://afrogroovers.vercel
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "AFROGROOVERS - Afrobeat & Groove Social Experience",
+    default: "AFROGROOVERS — Afrobeat & Groove Social Experience",
     template: "%s | AFROGROOVERS"
   },
   description:
-    "AFROGROOVERS est une experience afro premium melant afrobeats, networking chic, lifestyle et vibes outdoor.",
+    "AFROGROOVERS est une expérience afro premium mêlant afrobeats, networking chic, lifestyle et outdoor summer vibes. Soirées afro à Paris et en France.",
   keywords: [
-    "AFROGROOVERS", "afrobeats", "afrobeat", "amapiano", "afro-house",
-    "networking chic", "rooftop", "open air", "party", "Paris"
+    "AFROGROOVERS", "afrobeats", "afrobeat", "amapiano", "afro-house", "afro-funk",
+    "soirée afro", "soirée afrobeats Paris", "événement afro", "afroswing",
+    "networking chic", "rooftop", "open air", "party Paris", "highlife",
+    "afropop", "afro-rave", "groove", "dancefloor", "expérience afro"
   ],
   authors: [{ name: "AFROGROOVERS" }],
   creator: "AFROGROOVERS",
+  alternates: { canonical: siteUrl },
   openGraph: {
-    title: "AFROGROOVERS - Afrobeat & Groove Social Experience",
+    title: "AFROGROOVERS — Afrobeat & Groove Social Experience",
     description:
-      "Une experience afro premium, solaire et conviviale qui mixe musique, lifestyle, rencontres et outdoor summer vibes.",
+      "Une expérience afro premium, solaire et conviviale qui mixe musique, lifestyle, rencontres et outdoor summer vibes.",
     url: siteUrl,
     siteName: "AFROGROOVERS",
     locale: "fr_FR",
@@ -55,13 +58,14 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AFROGROOVERS - Afrobeat & Groove Social Experience",
-    description: "Groove, Afrobeats, Love.",
+    title: "AFROGROOVERS — Afrobeat & Groove Social Experience",
+    description:
+      "Une expérience afro premium mêlant afrobeats, networking chic et outdoor summer vibes. Soirées afro à Paris."
   },
   robots: {
     index: true,
     follow: true,
-    googleBot: { index: true, follow: true }
+    googleBot: { index: true, follow: true, "max-image-preview": "large" }
   }
 };
 

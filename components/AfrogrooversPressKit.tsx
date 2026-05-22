@@ -197,9 +197,32 @@ function AfrogrooversFooter() {
   );
 }
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "AFROGROOVERS",
+  url: "https://afrogroovers.vercel.app",
+  logo: "https://afrogroovers.vercel.app/afrogroovers/logo/logo-main.png",
+  description:
+    "AFROGROOVERS est une expérience afro premium mêlant afrobeats, networking chic, lifestyle et outdoor summer vibes.",
+  sameAs: ["https://www.instagram.com/afrogroovers/"],
+  contactPoint: {
+    "@type": "ContactPoint",
+    email: "afrogroovers@gmail.com",
+    telephone: "+33652910427",
+    contactType: "customer support"
+  },
+  founder: [
+    { "@type": "Person", name: "Célia", sameAs: "https://www.instagram.com/celia.sans.filtres/" },
+    { "@type": "Person", name: "Stéphane", sameAs: "https://www.instagram.com/monsieur.guitoo" }
+  ],
+  knowsAbout: ["Afrobeats", "Amapiano", "Afro-house", "Highlife", "Afroswing", "Soirées afro", "Networking"]
+};
+
 export function AfrogrooversPressKit() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <main className="overflow-x-clip bg-[#101218] text-[#F5F1E8]">
         <AfrogrooversHeader />
 

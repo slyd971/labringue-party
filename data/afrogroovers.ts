@@ -126,7 +126,7 @@ export const afrogrooversKit = {
       },
       {
         name: "Stephane",
-        role: "Fondateur",
+        role: "Fondateur - Concepteur",
         instagram: "@monsieur.guitoo",
         image: "/afrogroovers/contact/stephane.jpeg",
         href: "https://www.instagram.com/monsieur.guitoo?igsh=aWx2cGE5Mmc4dzBk"

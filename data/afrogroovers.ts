@@ -13,8 +13,8 @@ export const afrogrooversKit = {
     poster: "/afrogroovers/gallery/gallery-10.jpg"
   },
   stats: [
-    { value: "+250", label: "Afrogroovers par event", detail: "Une communauté active rassemblée autour de chaque édition." },
-    { value: "+20", label: "événements prévus en 2026", detail: "Une programmation qui installe le concept dans la durée." },
+    { value: "+300", label: "Afrogroovers par event", detail: "Une communauté active rassemblée autour de chaque édition." },
+    { value: "+10", label: "événements prévus en 2026", detail: "Une programmation qui installe le concept dans la durée." },
     { value: "100%", label: "concept Afro Original", detail: "Afrobeats, highlife, amapiano, afro-house et groove culture." }
   ],
   concept: {

@@ -4,7 +4,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Mail } from "lucide-react";
 import { GallerySection } from "@/components/GallerySection";
-import { VenuesSection } from "@/components/VenuesSection";
 import { SectionReveal } from "@/components/SectionReveal";
 import { BringueHeader } from "@/components/BringueHeader";
 import { pressKit } from "@/data/config";
@@ -15,19 +14,6 @@ type CityPageProps = {
 
 function getCity(slug: string) {
   return pressKit.cities.find((city) => city.slug === slug);
-}
-
-function WomanFigure({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 80 148" fill="currentColor" className={className} aria-hidden="true">
-      <circle cx="40" cy="13" r="13" />
-      <rect x="5" y="33" width="11" height="36" rx="5.5" transform="rotate(-14 10.5 51)" />
-      <rect x="64" y="33" width="11" height="36" rx="5.5" transform="rotate(14 69.5 51)" />
-      <path d="M27,30 L53,30 L67,106 L13,106 Z" />
-      <rect x="17" y="105" width="16" height="43" rx="5" />
-      <rect x="47" y="105" width="16" height="43" rx="5" />
-    </svg>
-  );
 }
 
 export function generateStaticParams() {
@@ -58,10 +44,6 @@ export default async function CityPage({ params }: CityPageProps) {
   const city = getCity(slug);
   if (!city) notFound();
 
-  const taglineLines = pressKit.tagline
-    .replace(/\.$/, "")
-    .split(". ")
-    .map((l) => l + ".");
 
   return (
     <main className="bg-[#050505] text-white">
@@ -82,73 +64,50 @@ export default async function CityPage({ params }: CityPageProps) {
       <section className="flex min-h-[85svh] flex-col lg:flex-row">
 
         {/* Left: pink panel */}
-        <div className="flex flex-col items-center justify-between bg-[#f4a3da] px-8 py-10 lg:w-1/2 lg:px-14 lg:py-14">
+        <div className="flex flex-col justify-between bg-[#f4a3da] px-8 py-12 lg:w-1/2 lg:px-14 lg:py-16">
           <Image
             src="/logo/logo-villes.png"
             alt="La Bringue"
             width={900}
             height={182}
-            className="w-full max-w-[340px] lg:max-w-[480px]"
+            className="w-full max-w-[200px] lg:max-w-[260px]"
             priority
           />
-          <WomanFigure className="w-40 text-[#1a1518] sm:w-52 lg:w-64" />
-          <div aria-hidden="true" className="h-8 lg:h-12" />
-        </div>
-
-        {/* Right: dark panel */}
-        <div className="relative flex flex-col justify-between bg-[#111] px-6 py-10 lg:w-1/2 lg:px-14 lg:py-14">
-          <div />
-
           <div>
-            {/* City name in outlined box */}
-            <div className="border border-[#f4a3da]/40 p-4 sm:p-6 lg:p-8">
-              <h1 className="font-display text-[clamp(2.8rem,8vw,8rem)] uppercase leading-none tracking-[0.03em] text-[#f4a3da]">
-                {city.name}
-              </h1>
-            </div>
-
-            {/* Tagline — 3 lines */}
-            <div className="mt-8 space-y-1 lg:mt-12">
-              {taglineLines.map((line) => (
-                <p
-                  key={line}
-                  className="font-display text-[clamp(1.5rem,3.8vw,3.6rem)] uppercase leading-[1.08] tracking-[0.03em] text-[#f4a3da]"
-                >
-                  {line}
-                </p>
-              ))}
-            </div>
+            <h1
+              className="font-display uppercase leading-none tracking-[0.03em] text-[#1a1518]"
+              style={{ fontSize: `clamp(3.5rem, ${Math.min(13, 78 / city.name.length).toFixed(1)}vw, 14rem)` }}
+            >
+              {city.name}
+            </h1>
+            <p className="mt-6 font-display text-[clamp(1rem,2.2vw,2rem)] uppercase leading-[1.1] tracking-[0.03em] text-[#1a1518]">
+              <strong>{pressKit.tagline}</strong>
+            </p>
           </div>
-
-          <div />
+          <div aria-hidden="true" />
         </div>
-      </section>
 
-      {/* Stats */}
-      <section className="relative overflow-hidden bg-[#f4a3da] py-10 text-black sm:py-12 lg:py-14">
-        <div className="absolute inset-0 opacity-25 [background-image:linear-gradient(rgba(0,0,0,.12)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,.12)_1px,transparent_1px)] [background-size:96px_96px]" />
-        <div className="shell relative">
-          <div className="grid grid-cols-2 gap-y-10 lg:grid-cols-3">
-            {city.stats.map((stat, index) => (
-              <SectionReveal key={stat.label} delay={index * 0.08} className="px-3 text-center">
-                <p className="font-display text-[3rem] uppercase leading-none text-black sm:text-[4rem] lg:text-[5rem]">
+        {/* Right: dark panel with KPIs */}
+        <div className="flex flex-col justify-center bg-[#111] px-6 py-10 lg:w-1/2 lg:px-14 lg:py-14">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 lg:grid-cols-1 lg:gap-8">
+            {city.stats.map((stat) => (
+              <div key={stat.label} className="py-4">
+                <p className="font-display text-[3rem] uppercase leading-none text-[#f4a3da] lg:text-[4.5rem]">
                   {stat.value}
                 </p>
-                <p className="mx-auto mt-3 max-w-[18ch] font-sans text-[10px] font-black uppercase leading-5 tracking-[0.22em] text-black/70 sm:text-[11px]">
+                <p className="mt-2 font-sans text-[10px] font-black uppercase tracking-[0.22em] text-white/60">
                   {stat.label}
                 </p>
-                <p className="mt-2 font-sans text-[0.82rem] leading-5 text-black/58">
+                <p className="mt-1 font-sans text-[0.82rem] leading-5 text-white/40">
                   {stat.detail}
                 </p>
-              </SectionReveal>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       <GallerySection items={city.gallery} title={`Nos Bringueuses de ${city.name} en images.`} />
-
-      <VenuesSection />
 
       {/* CTA */}
       <section className="bg-[#f4a3da] py-10 text-[#151015] sm:py-14 lg:py-18">

@@ -313,7 +313,8 @@ export function BringuePressKit() {
           <div className="relative mt-8 sm:mt-16 lg:mt-24">
 
             {/* ── Desktop horizontal timeline ── */}
-            <div className="relative hidden px-2 py-28 md:block">
+            <div className="relative hidden overflow-x-auto md:block">
+              <div className="relative px-2 py-28" style={{ minWidth: `${pressKit.cities.length * 7}rem` }}>
 
               {/* Bar with shimmer sweep */}
               <div className="absolute left-0 right-0 top-1/2 h-3 -translate-y-1/2 overflow-hidden rounded-full bg-[#f4a3da]">
@@ -324,7 +325,7 @@ export function BringuePressKit() {
                 />
               </div>
 
-              <div className="grid grid-cols-12">
+              <div className="grid" style={{ gridTemplateColumns: `repeat(${pressKit.cities.length}, minmax(0, 1fr))` }}>
                 {pressKit.cities.map((city, index) => {
                   const isTop = index % 2 === 0;
 
@@ -384,6 +385,7 @@ export function BringuePressKit() {
                     </Link>
                   );
                 })}
+              </div>
               </div>
             </div>
 

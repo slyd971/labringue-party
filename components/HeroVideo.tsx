@@ -54,7 +54,7 @@ export function HeroVideo() {
               {pressKit.eventName}
             </h1>
             <p className="mt-6 max-w-3xl text-balance text-xl font-medium leading-8 text-white/78 md:text-3xl">
-              {pressKit.tagline}
+              <strong>{pressKit.tagline}</strong>
             </p>
             <p className="mt-5 max-w-2xl text-sm leading-7 text-white/58 md:text-base">
               {pressKit.description}

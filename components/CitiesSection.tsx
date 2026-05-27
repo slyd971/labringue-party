@@ -55,6 +55,10 @@ export function CitiesSection() {
               <path d="M176 516 724 632" stroke="rgba(0,0,0,.08)" strokeWidth="2" />
             </svg>
 
+            <div className="absolute right-5 top-6 z-10 rounded border border-lime/30 bg-black/70 px-3 py-1.5 backdrop-blur">
+              <p className="text-[9px] font-black uppercase tracking-[0.24em] text-lime">+ La Réunion (DOM)</p>
+            </div>
+
             <div className="absolute left-6 top-6 z-10 flex items-center gap-3 text-white">
               <span className="flex h-12 w-12 items-center justify-center rounded-full bg-lime text-black">
                 <MapPinned className="h-5 w-5" />
@@ -67,7 +71,7 @@ export function CitiesSection() {
               </span>
             </div>
 
-            {pressKit.cities.map((city, index) => (
+            {pressKit.cities.filter((c) => c.slug !== "la-reunion").map((city, index) => (
               <motion.div
                 key={city.slug}
                 initial={{ opacity: 0, scale: 0.6 }}
@@ -106,7 +110,7 @@ export function CitiesSection() {
 
             <div className="absolute bottom-5 left-5 right-5 z-10 grid gap-2 text-white md:grid-cols-3">
               <div className="border border-white/12 bg-white/[0.06] p-4 backdrop-blur">
-                <p className="display-type text-5xl leading-none text-lime">+10</p>
+                <p className="display-type text-5xl leading-none text-lime">+23</p>
                 <p className="mt-2 text-[10px] font-black uppercase tracking-[0.24em] text-white/72">villes implantées</p>
               </div>
               <div className="border border-white/12 bg-white/[0.06] p-4 backdrop-blur">
@@ -114,8 +118,8 @@ export function CitiesSection() {
                 <p className="mt-2 text-[10px] font-black uppercase tracking-[0.24em] text-white/72">départ à Paris</p>
               </div>
               <div className="border border-white/12 bg-white/[0.06] p-4 backdrop-blur">
-                <p className="display-type text-5xl leading-none text-white">2024</p>
-                <p className="mt-2 text-[10px] font-black uppercase tracking-[0.24em] text-white/72">Bruxelles, Nantes, Cannes</p>
+                <p className="display-type text-5xl leading-none text-white">+1</p>
+                <p className="mt-2 text-[10px] font-black uppercase tracking-[0.24em] text-white/72">territoire outre-mer</p>
               </div>
             </div>
           </motion.div>

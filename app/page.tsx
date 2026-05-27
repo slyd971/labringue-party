@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
-import { AfrogrooversPressKit } from "@/components/AfrogrooversPressKit";
+import { BringuePressKit } from "@/components/BringuePressKit";
 
 export const metadata: Metadata = {
-  title: "AFROGROOVERS - Afrobeat & Groove Social Experience",
+  title: "La Bringue — La plus grosse soirée réservée aux femmes",
   description:
-    "AFROGROOVERS est une experience afro premium melant afrobeats, networking chic, lifestyle et vibes outdoor.",
+    "La Bringue c'est la soirée pensée pour les femmes et par les femmes : un moment entre filles dans un espace safe pour danser, chanter, s'amuser et rencontrer d'autres Bringueuses !",
   openGraph: {
-    title: "AFROGROOVERS - Afrobeat & Groove Social Experience",
-    description: "Afro luxury summer aesthetic, DJ lineup, events, videos and gallery.",
-    type: "website"
-  }
+    title: "La Bringue — La plus grosse soirée réservée aux femmes",
+    description:
+      "Soirées en non-mixité depuis 2019. Un espace safe pour faire la fête librement.",
+    type: "website",
+  },
 };
 
 export default function Home() {
-  return <AfrogrooversPressKit />;
+  return <BringuePressKit />;
 }

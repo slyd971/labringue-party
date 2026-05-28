@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { pressKit } from "@/data/config";
 import { SectionReveal } from "./SectionReveal";
@@ -25,9 +26,11 @@ export function VenuesSection() {
               className="flex min-h-[110px] items-center justify-center border border-white/10 bg-white/[0.025] p-5 transition hover:border-white/20 sm:min-h-[130px] lg:min-h-[150px]"
             >
               {venue.logo ? (
-                <img
+                <Image
                   src={venue.logo}
                   alt={venue.name}
+                  width={220}
+                  height={90}
                   className="max-h-[70px] w-full object-contain opacity-80 transition hover:opacity-100"
                 />
               ) : (
@@ -50,9 +53,11 @@ export function VenuesSection() {
               className="flex min-h-[110px] items-center justify-center border border-white/10 bg-white/[0.025] p-5 transition hover:border-white/20 sm:min-h-[130px] lg:min-h-[150px]"
             >
               {venue.logo ? (
-                <img
+                <Image
                   src={venue.logo}
                   alt={venue.name}
+                  width={220}
+                  height={90}
                   className="max-h-[70px] w-full object-contain opacity-80 transition hover:opacity-100"
                 />
               ) : (

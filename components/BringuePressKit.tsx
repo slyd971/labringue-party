@@ -257,7 +257,7 @@ export function BringuePressKit() {
           </h2>
         </SectionReveal>
 
-        <div className="shell mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:items-start lg:mt-14 lg:grid-cols-4 lg:gap-5">
+        <div className="shell mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:items-start lg:mt-14 lg:grid-cols-3 lg:gap-5">
           {pressKit.collaborations.map((item, index) => (
             <motion.div
               key={item.name}
@@ -277,10 +277,13 @@ export function BringuePressKit() {
                 <p className="font-sans text-[0.84rem] leading-6 text-[#888]">{item.note}</p>
               </div>
               <div className="shrink-0 bg-[#111]">
-                <img
+                <Image
                   src={item.image}
                   alt={item.name}
-                  className="w-full"
+                  width={1080}
+                  height={1350}
+                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                  className="h-auto w-full"
                 />
               </div>
             </motion.div>

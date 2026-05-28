@@ -57,13 +57,6 @@ const galleryPhotos = [
   "/gallery/gallery-5.jpeg"
 ] as const;
 
-const pressVisuals = {
-  parisien: "/presse/presse-parisien.png",
-  elle: "/presse/presse-elle.png",
-  coolmag: "/presse/presse-coolmag.png",
-  nova: "/presse/presse-nova.png"
-} as const;
-
 const premiumVisuals = {
   heroPoster: "/gallery/gallery-2.jpeg",
   concept: "/gallery/gallery-3.jpeg",
@@ -198,28 +191,40 @@ export const pressKit = {
   ],
   collaborations: [
     {
-      name: "Performances",
-      role: "Pendant les soirées",
-      image: "/vision/vision1.png",
-      note: "Laisser la place à des performances pour créer un vrai temps fort scénique."
+      name: "Vide dressing",
+      role: "Communauté",
+      image: "/vision/VIDE%20DRESSING.jpg",
+      note: "Un espace pour mettre en avant les petits business de la communauté et activer les Bringueuses autrement qu'en dansant."
     },
     {
-      name: "Soirées à thème",
-      role: "College party",
-      image: "/vision/vision2.png",
-      note: "Imaginer des concepts visuels forts et facilement identifiables par la communauté."
+      name: "Open Mic",
+      role: "Scène ouverte",
+      image: "/vision/OPEN%20MIC.jpg",
+      note: "On laisse la scène aux talents émergents de la région pour se produire devant une salle acquise à leur cause."
     },
     {
-      name: "Pop-up corners",
-      role: "Boutiques & business",
-      image: "/vision/vision3.png",
-      note: "Mettre en avant des boutiques et petits business tenus par des femmes."
+      name: "Concours de twerk",
+      role: "Animation",
+      image: "/vision/SHOWCASE.jpg",
+      note: "Des animations pour faire monter l'énergie et faire gagner des cadeaux à la communauté."
     },
     {
-      name: "Week-end à l'étranger",
-      role: "Expansion",
-      image: "/vision/vision4.png",
-      note: "Partir un week-end à l'étranger pour inaugurer une nouvelle ville."
+      name: "Showcase",
+      role: "Live",
+      image: "/vision/SHOWCASE.jpg",
+      note: "Une soirée 100% Shatta avec trois grosses artistes en showcase — de quoi faire plaisir aux Bringueuses."
+    },
+    {
+      name: "Workshop heels",
+      role: "Apprentissage",
+      image: "/vision/WORKSHOP.jpg",
+      note: "Parce qu'une Bringue, c'est aussi l'occasion d'apprendre quelque chose de nouveau et de repartir avec une nouvelle compétence."
+    },
+    {
+      name: "Bringue caritative",
+      role: "Impact",
+      image: "/vision/CARITATIVE.png",
+      note: "Une édition spéciale au profit d'une ONG, pour montrer que la communauté peut aussi s'engager et avoir un impact."
     }
   ],
   videos: [

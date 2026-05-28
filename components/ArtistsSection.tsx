@@ -60,7 +60,7 @@ export function ArtistsSection() {
                   hidden: {},
                   visible: { transition: { staggerChildren: 0.08 } }
                 }}
-                className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
+                className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
               >
                 {group.items.map((item) => (
                   <motion.div

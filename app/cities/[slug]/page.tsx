@@ -8,6 +8,8 @@ import { SectionReveal } from "@/components/SectionReveal";
 import { BringueHeader } from "@/components/BringueHeader";
 import { pressKit } from "@/data/config";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://labringue-party.vercel.app";
+
 type CityPageProps = {
   params: Promise<{ slug: string }>;
 };
@@ -27,9 +29,13 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
   return {
     title: `La Bringue ${city.name}`,
     description: `La Bringue ${city.name} — soirée girls only 100% fun & safe depuis ${city.editions}. Découvrez l'univers La Bringue dans votre ville.`,
+    alternates: {
+      canonical: `/cities/${city.slug}`
+    },
     openGraph: {
       title: `La Bringue ${city.name} — Girls Only Party`,
-      description: `Soirée girls only 100% fun & safe à ${city.name} depuis ${city.editions}. +125K abonnées, communauté bienveillante.`,
+      description: `Soirée girls only 100% fun & safe à ${city.name} depuis ${city.editions}. +130K abonnées, communauté bienveillante.`,
+      url: `${siteUrl}/cities/${city.slug}`,
     },
     twitter: {
       card: "summary_large_image",

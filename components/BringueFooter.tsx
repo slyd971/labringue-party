@@ -17,7 +17,7 @@ export function BringueFooter() {
       <div className="shell">
 
         {/* Top row: logo + sitemap + contact + socials */}
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.25fr_0.85fr_1.35fr_1fr]">
 
           {/* Brand */}
           <div>
@@ -64,7 +64,7 @@ export function BringueFooter() {
             <p className="font-sans text-[10px] font-black uppercase tracking-[0.18em] text-white">
               Villes
             </p>
-            <ul className="mt-3 space-y-2">
+            <ul className="mt-3 grid grid-cols-2 gap-x-5 gap-y-2">
               {pressKit.cities.map((city) => (
                 <li key={city.slug}>
                   <Link

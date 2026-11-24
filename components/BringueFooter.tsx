@@ -122,15 +122,17 @@ export function BringueFooter() {
             © {new Date().getFullYear()} La Bringue — Tous droits réservés
           </p>
 
-          <a
-            href="https://presskit.fr"
-            target="_blank"
-            rel="noreferrer noopener"
-            className="inline-flex items-center gap-2 font-sans text-[10px] font-black uppercase tracking-[0.18em] text-white/30 transition hover:text-white/60"
-          >
-            <span>Powered by</span>
-            <span className="border border-white/20 px-2 py-0.5 text-white/50">presskit.fr</span>
-          </a>
+          <p className="inline-flex flex-wrap items-center gap-2 font-sans text-[10px] font-black uppercase tracking-[0.18em] text-white/30">
+            <span>Press kit organisateur réalisé par</span>{" "}
+            <a
+              href="https://www.presskit.fr/organisateur"
+              target="_blank"
+              rel="noopener"
+              className="border border-white/20 px-2 py-0.5 text-white/50 transition hover:text-white/60"
+            >
+              PressKit For You
+            </a>
+          </p>
 
           <p className="font-sans text-[10px] font-black uppercase tracking-[0.18em] text-[#3a3a3a]">
             Safe Place
